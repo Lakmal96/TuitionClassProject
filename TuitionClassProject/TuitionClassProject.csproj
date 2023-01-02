@@ -170,16 +170,58 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202301020508281_InitialCreate.cs" />
+    <Compile Include="Migrations\202301020508281_InitialCreate.Designer.cs">
+      <DependentUpon>202301020508281_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301020517411_AddCourseModel.cs" />
+    <Compile Include="Migrations\202301020517411_AddCourseModel.Designer.cs">
+      <DependentUpon>202301020517411_AddCourseModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301020624146_AddInstructorModel.cs" />
+    <Compile Include="Migrations\202301020624146_AddInstructorModel.Designer.cs">
+      <DependentUpon>202301020624146_AddInstructorModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301020637077_AddStudentModel.cs" />
+    <Compile Include="Migrations\202301020637077_AddStudentModel.Designer.cs">
+      <DependentUpon>202301020637077_AddStudentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301020646343_ModifyRelationships.cs" />
+    <Compile Include="Migrations\202301020646343_ModifyRelationships.Designer.cs">
+      <DependentUpon>202301020646343_ModifyRelationships.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301021408108_ModifyRelationshipCourseAndInstructor.cs" />
+    <Compile Include="Migrations\202301021408108_ModifyRelationshipCourseAndInstructor.Designer.cs">
+      <DependentUpon>202301021408108_ModifyRelationshipCourseAndInstructor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301021431218_ModifyModels.cs" />
+    <Compile Include="Migrations\202301021431218_ModifyModels.Designer.cs">
+      <DependentUpon>202301021431218_ModifyModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202301021552429_PopulateCategoryTable.cs" />
+    <Compile Include="Migrations\202301021552429_PopulateCategoryTable.Designer.cs">
+      <DependentUpon>202301021552429_PopulateCategoryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\CourseStudents.cs" />
+    <Compile Include="Models\Instructor.cs" />
+    <Compile Include="Models\InstructorStudents.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-paper.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -235,6 +277,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\Students\StudentForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -251,6 +295,32 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202301020508281_InitialCreate.resx">
+      <DependentUpon>202301020508281_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301020517411_AddCourseModel.resx">
+      <DependentUpon>202301020517411_AddCourseModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301020624146_AddInstructorModel.resx">
+      <DependentUpon>202301020624146_AddInstructorModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301020637077_AddStudentModel.resx">
+      <DependentUpon>202301020637077_AddStudentModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301020646343_ModifyRelationships.resx">
+      <DependentUpon>202301020646343_ModifyRelationships.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301021408108_ModifyRelationshipCourseAndInstructor.resx">
+      <DependentUpon>202301021408108_ModifyRelationshipCourseAndInstructor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301021431218_ModifyModels.resx">
+      <DependentUpon>202301021431218_ModifyModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301021552429_PopulateCategoryTable.resx">
+      <DependentUpon>202301021552429_PopulateCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
