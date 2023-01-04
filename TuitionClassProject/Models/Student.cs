@@ -29,6 +29,7 @@ namespace TuitionClassProject.Models
 
         public Category Category { get; set; }
 
+        [Display(Name = "Path")]
         public byte CategoryId { get; set; }
 
         public ICollection<InstructorStudents> InstructorStudents { get; set; }

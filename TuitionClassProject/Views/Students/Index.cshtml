@@ -1,8 +1,30 @@
-﻿
+﻿@model IEnumerable<TuitionClassProject.Models.Student>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>List of Students</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Index No</th>
+            <th>Student Name</th>
+            <th>Path</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(student.IndexNumber, "Edit", "Students", new {id = student.Id}, null)</td>
+                <td>@student.Name</td>
+                <td>@student.Category.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
 
