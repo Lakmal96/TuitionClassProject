@@ -39,21 +39,35 @@ namespace TuitionClassProject.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Student student)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new StudentFormViewModel()
+                {
+                    Categories = _context.Categories.ToList(),
+                    Student = student
+                };
+
+                return View("StudentForm", viewModel);
+            }
+
             if (student.Id == 0)
             {
                 _context.Students.Add(student);
             }
+            else
+            {
+                var studentInDb = _context.Students.Single(s => s.Id == student.Id);
 
-            var studentInDb = _context.Students.Single(s => s.Id == student.Id);
-
-            studentInDb.Name = student.Name;
-            studentInDb.IndexNumber = student.IndexNumber;
-            studentInDb.Email = student.Email;
-            studentInDb.ContactNumber = student.ContactNumber;
-            studentInDb.CategoryId = student.CategoryId;
-            studentInDb.IsActive = student.IsActive;
+                studentInDb.Name = student.Name;
+                studentInDb.IndexNumber = student.IndexNumber;
+                studentInDb.Email = student.Email;
+                studentInDb.ContactNumber = student.ContactNumber;
+                studentInDb.CategoryId = student.CategoryId;
+                studentInDb.IsActive = student.IsActive;
+            }
 
             _context.SaveChanges();
 
@@ -71,11 +85,30 @@ namespace TuitionClassProject.Controllers
 
             var viewModel = new StudentFormViewModel
             {
-               Student = student,
-               Categories = _context.Categories.ToList()
+                Student = student,
+                Categories = _context.Categories.ToList()
             };
 
             return View("StudentForm", viewModel);
+        }
+
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            var studentInDb = _context.Students.SingleOrDefault(s => s.Id == id);
+            Response.Write(studentInDb);
+
+            if (studentInDb != null)
+            {
+                _context.Students.Remove(studentInDb);
+                _context.SaveChanges();
+
+            }
+
+
+
+            return RedirectToAction("Index", "Students");
+
         }
     }
 }

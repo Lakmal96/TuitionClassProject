@@ -11,5 +11,7 @@ namespace TuitionClassProject.ViewModels
         public IEnumerable<Category> Categories { get; set; }
 
         public Student Student { get; set; }
+
+       
     }
 }

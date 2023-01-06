@@ -19,6 +19,7 @@ namespace TuitionClassProject.Models
         public string IndexNumber { get; set; }
 
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]

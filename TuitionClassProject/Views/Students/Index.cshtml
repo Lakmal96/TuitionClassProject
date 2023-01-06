@@ -5,6 +5,7 @@
 }
 
 <h2>List of Students</h2>
+@Html.ActionLink("New Student", "StudentForm", "Students", new {@class = "btn btn-primary"})
 
 <table class="table table-bordered table-hover">
     <thead>
@@ -12,16 +13,18 @@
             <th>Index No</th>
             <th>Student Name</th>
             <th>Path</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var student in Model)
         {
-            <tr>
-                <td>@Html.ActionLink(student.IndexNumber, "Edit", "Students", new {id = student.Id}, null)</td>
-                <td>@student.Name</td>
-                <td>@student.Category.Name</td>
-            </tr>
+        <tr>
+            <td>@Html.ActionLink(student.IndexNumber, "Edit", "Students", new { id = student.Id }, null)</td>
+            <td>@student.Name</td>
+            <td>@student.Category.Name</td>
+            <td>@Html.ActionLink(student.IndexNumber, "Delete", "Students", new { id = student.Id }, null)</td>
+        </tr>
         }
     </tbody>
 </table>
