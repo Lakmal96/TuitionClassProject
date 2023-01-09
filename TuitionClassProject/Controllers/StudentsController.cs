@@ -92,23 +92,23 @@ namespace TuitionClassProject.Controllers
             return View("StudentForm", viewModel);
         }
 
-        [HttpDelete]
-        public ActionResult Delete(int id)
-        {
-            var studentInDb = _context.Students.SingleOrDefault(s => s.Id == id);
-            Response.Write(studentInDb);
+        //[HttpDelete]
+        //public ActionResult Delete(int id)
+        //{
+        //    var studentInDb = _context.Students.SingleOrDefault(s => s.Id == id);
+        //    Response.Write(studentInDb);
 
-            if (studentInDb != null)
-            {
-                _context.Students.Remove(studentInDb);
-                _context.SaveChanges();
+        //    if (studentInDb != null)
+        //    {
+        //        _context.Students.Remove(studentInDb);
+        //        _context.SaveChanges();
 
-            }
+        //    }
 
 
 
-            return RedirectToAction("Index", "Students");
+        //    return RedirectToAction("Index", "Students");
 
-        }
+        //}
     }
 }

@@ -10,7 +10,8 @@
 @using (Html.BeginForm("Save", "Students"))
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(m => m.Student.Id)
+    @Html.Hidden("Student.Id", (Model.Student != null) ? Model.Student.Id : 0)
+   // @Html.HiddenFor(m => m.Student.Id)
     <div class="form-group">
         @Html.LabelFor(m => m.Student.Name)
         @Html.TextBoxFor(m => m.Student.Name, new { @class = "form-control" })
