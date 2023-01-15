@@ -10,7 +10,7 @@
 <table id="students" class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>Index No</th>
+            <th>Index Number</th>
             <th>Student Name</th>
             <th>Path</th>
             <th>Action</th>
@@ -36,7 +36,7 @@
 {
     <script>
         $(document).ready(function () {
-            $("#students").DataTable();
+            var table = $("#students").DataTable();
 
             $(".js-delete").on('click', function () {
                 var button = $(this);
@@ -48,7 +48,8 @@
                                 url: "/api/students/" + button.attr("data-id"),
                                 method: "DELETE",
                                 success: function () {
-                                    button.parents("tr").remove();
+                                    table.rows(button.parents("tr")).remove().draw();
+                                    //button.parents("tr").remove();
                                 }
                             });
                         }
